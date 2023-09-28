@@ -1,0 +1,47 @@
+#navContainer{
+    padding: 5PX; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    position:fixed;
+    width: 100vw;
+}
+
+#title{
+    padding: 10px;
+    font-size: 30px;
+}
+
+.linkContainer{
+   background-color: transparent;
+   border: 0;
+   display: flex;
+   gap: 15px;    
+   color: #a5a5a5;
+   
+}
+
+.linkOption{
+    font-size: 12px;
+    
+}
+
+.linkOption:hover{
+    font-weight: bold;
+    
+}
+
+#Navbar{
+    padding: 5px;
+    font-size: 20px;
+}
+
+
+
+.cartImg{
+    height: 14px;
+    width: 14px;
+}
+

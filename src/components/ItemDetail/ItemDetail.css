@@ -1,0 +1,13 @@
+.CardItemDetail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 30px 0px;
+    gap: 40px;
+    padding-top: 90px;
+}
+
+.ItemImg2{
+    height: 240px;
+    width: 150px;
+}
