@@ -1,8 +1,16 @@
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
+import {useState} from 'react'
+import { Link } from 'react-router-dom'
 
 
 const ItemDetail = ({id, name, img, precio, categoria, stock, description }) => {
+    const [quantityAdded, setQuantityAdded] = useState(0)
+
+    const handleOnAdd =(quantity) => {
+        setQuantityAdded(quantity)
+    }
+
     return (
         <article className='CardItemDetail'>
             <header className='Header'> 
@@ -17,7 +25,14 @@ const ItemDetail = ({id, name, img, precio, categoria, stock, description }) => 
                 <p className='Info'>Descripción: {description}</p>
             </section>
             <footer className='ItemFooter'>
-            <ItemCount initial={1} stock={10} onAdd={(quantity) => console.log ("Cantidad Agregada ",quantity)}/>
+                {
+                    quantityAdded > 0 ? (
+                        <Link to='/cart' className='Option'>Terminar compra</Link>
+                    ):( 
+                        <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>
+                    )
+                }
+         
             </footer>
         </article>
     )
