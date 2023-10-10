@@ -14,14 +14,14 @@ const ItemListContainer = ({gretting}) => {
         asyncFunc(categoryId)
             .then(response => {
                 setProducts(response)
-                console.log(categoryId);
+                // console.log(categoryId);
             })
             .catch(error => {
                 console.error(error)
             })
     }, [categoryId])
     
-    console.log(categoryId);
+    // console.log(categoryId);
 
 
 

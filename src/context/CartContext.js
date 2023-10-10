@@ -1,40 +1,49 @@
-import { createContext, useState } from "react";
+// CartContext.js
+import React, { createContext, useContext, useState } from 'react';
 
-export const CartContext = createContext ({
-    cart: []
-})
+export const CartContext = createContext();
 
-export const CartProvider = ({children}) => {
-    const [cart,setCart] = useState([])
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
-    console.log(cart)
+  const addItem = (item, quantity) => {
+    const existingItemIndex = cart.findIndex((cartItem) => cartItem.id === item.id);
 
-    const addItem =(item, quantity) => {
-        if(!isInCart(item.id)) {
-            setCart(prev => [...prev, {...item, quantity}])
-        }else{
-            console.error('El producto ya fue agregado')
-        }
+    if (existingItemIndex !== -1) {
+      const updatedCart = [...cart];
+      updatedCart[existingItemIndex].quantity += quantity;
+      setCart(updatedCart);
+    } else {
+      const newItem = { ...item, quantity };
+      setCart([...cart, newItem]);
     }
 
-    const removeItem = (itemId) => {
-        const cartUpdated = cart.filter(prod => prod.id !== itemId)
-        setCart(cartUpdated)
-    }
+    setTotalQuantity(totalQuantity + quantity);
+  };
 
-    const clearCart = () => {
-        setCart([])
-    }
+  const clearCart = () => {
+    setCart([]);
+    setTotalQuantity(0);
+  };
 
-    const isInCart = (itemId) => {
-        return cart.some(prod => prod.id ===itemId)
-    }
+  const total = cart.reduce((acc, item) => acc + item.quantity * item.precio, 0);
 
-    return (
-        <CartContext.Provider value={{cart, addItem, removeItem, clearCart}}>
-        {children}
-        </CartContext.Provider>
-    )
-}
+  return (
+    <CartContext.Provider
+      value={{ cart, totalQuantity, addItem, clearCart, total }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
 
-export default CartContext
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('useCart debe ser utilizado dentro de un proveedor de carrito');
+  }
+  return context;
+};
+
+export default CartContext;
