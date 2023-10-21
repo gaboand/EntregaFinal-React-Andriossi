@@ -5,7 +5,9 @@ const CartItem = ({ item, quantity, removeItem }) => {
   return (
     <div className="CartItem">
       <div className="CartItem-details">
-        <img src={item.img} alt={item.name} className="CartItem-image" />
+        {item.img && (
+          <img src={`../../img/${item.img}`} alt={item.name} className="CartItem-image" />
+        )}
         <div className="CartItem-info">
           <h3 className="CartItem-name">{item.name}</h3>
           <p className="CartItem-price">${item.precio}</p>
