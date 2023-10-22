@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'; // Cambio en la importación
 
+
 const ItemDetail = ({id, name, img, precio, categoria, stock, description }) => {
     const [quantityAdded, setQuantityAdded] = useState(0)
     const { addItem } = useCart(); // Cambio en cómo se obtiene el contexto

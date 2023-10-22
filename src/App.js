@@ -5,9 +5,10 @@ import "bulma/css/bulma.css";
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import Cart from './components/Cart/Cart'
-import Footer from './components/Footer/Footer'
-import Info from './components/Info/Info'
+import Cart from './components/Cart/Cart';
+import Footer from './components/Footer/Footer';
+import Info from './components/Info/Info';
+import CheckoutComponents from './components/Checkout/CheckoutComponents';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path='/category/:categoryId' element={<ItemListContainer />}/>
             <Route path='/item/:itemId' element={<ItemDetailContainer />}/>
             <Route path='/cart' element={<Cart />}/>
+            <Route path='/checkout' element={<CheckoutComponents />}/>
             <Route path='*' element={<h1>404 NOT FONUD </h1>}/>
           </Routes>
         </CartProvider>

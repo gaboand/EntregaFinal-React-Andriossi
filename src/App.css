@@ -40,8 +40,9 @@
 .Notes{
   padding: 30px;
   display: flex;
+  justify-content: center;
   gap: 15px;
-  margin: 0px 30px;
+  margin: 20px 30px;
 }
 
 .carrito__beneficios--title{

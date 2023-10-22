@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import './Item.css'
+import imagen1 from "../img/prod1-1.webp";
+
 
 const Item = ({id, name, img, precio, stock, description }) =>{
     return(
