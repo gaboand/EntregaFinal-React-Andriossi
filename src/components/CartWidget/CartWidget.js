@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import cart from "./assets/cart.svg";
 import { useCart } from '../../context/CartContext';
 
-
 const CartWidget = () => {
     const { totalQuantity } = useCart();
 
@@ -20,7 +19,3 @@ const CartWidget = () => {
 }
 
 export default CartWidget;
-
-
-
-// style={{ display: totalQuantity > 0 ? 'block' : 'none'}}

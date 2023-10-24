@@ -9,8 +9,6 @@ const ItemDetail = ({id, name, img, precio, categoria, stock, description }) => 
     const [quantityAdded, setQuantityAdded] = useState(0)
     const { addItem } = useCart();
 
-    console.log(img)
-
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity);
 

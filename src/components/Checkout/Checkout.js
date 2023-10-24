@@ -1,9 +1,9 @@
 import { useState, useContext } from "react"
 import { CartContext } from '../../context/CartContext'
-// import { Link } from "react-router-dom"
 import {getDocs, collection, query, where, documentId, writeBatch, addDoc, Timestamp} from "firebase/firestore"
 import { db } from "../../services/firebase/firebaseConfig"
 import CheckoutForm from '../CheckoutForm/CheckoutForm'
+import './Checkout.css' 
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
@@ -32,22 +32,23 @@ const Checkout = () => {
 
             const productsRef = collection(db, 'products')
 
-            const productsAddedFromFirestore = await getDocs (query(productsRef, where(documentId(), 'in,', ids))) 
-            const { docs } = productsAddedFromFirestore
+            // const productsAddedFromFirestore = await getDocs (query(productsRef, where(documentId(), 'in,', ids)))
+      
+            // const { docs } = productsAddedFromFirestore
 
-            docs.forEach(doc => {
-                const dataDoc = doc.data()
-                const stockDb = dataDoc.stock
+            // docs.forEach(doc => {
+            //     const dataDoc = doc.data()
+            //     const stockDb = dataDoc.stock
 
-                const productAddedToCart = cart.find(prod => prod.id === doc.id)
-                const prodQuantity = productAddedToCart?.quantity
+            //     const productAddedToCart = cart.find(prod => prod.id === doc.id)
+            //     const prodQuantity = productAddedToCart?.quantity
 
-                if(stockDb >= prodQuantity) {
-                    batch.update(doc.ref, { stock: stockDb - prodQuantity})
-                } else{
-                    outOfStock.push( {id: doc.id, ...dataDoc})
-                }
-            })
+            //     if(stockDb >= prodQuantity) {
+            //         batch.update(doc.ref, { stock: stockDb - prodQuantity})
+            //     } else{
+            //         outOfStock.push( {id: doc.id, ...dataDoc})
+            //     }
+            // })
 
             if(outOfStock.length === 0) {
                 await batch.commit()
@@ -71,11 +72,20 @@ const Checkout = () => {
     } 
 
     if(loading) {
-        return <h1>Se esta generando su orden...</h1>
-    }
-
+        return (
+        <div className="cartcontainer">
+            <h1 className="message">Se esta generando su orden...</h1>
+        </div>
+        )
+}
     if (orderId) {
-        return <h1>El id de su orden es: {orderId}</h1>
+        return (
+        <div className="cartcontainer">
+            <h1 className="message">El id de su orden es: {orderId}</h1>
+            <h2 className="message2">Muchas gracias por su compra!</h2>
+        </div>
+        )
+        
     }
 
     return (
