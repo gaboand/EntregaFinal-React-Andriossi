@@ -5,11 +5,11 @@ import {getDocs, collection, query, where, documentId, writeBatch, addDoc, Times
 import { db } from "../../services/firebase/firebaseConfig"
 import CheckoutForm from '../CheckoutForm/CheckoutForm'
 
-const CheckoutComponents = () => {
+const Checkout = () => {
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState ('')
 
-    const { cart, total, clearCart } =useContext(CartContext)
+    const { cart, total, clearCart } = useContext(CartContext)
 
     const createOrder = async ({ name, phone, email}) => {
         setLoading(true)
@@ -79,7 +79,7 @@ const CheckoutComponents = () => {
     }
 
     return (
-        <div>
+        <div className='cartcontainer'>
             <h1>Checkout</h1>
             <CheckoutForm onConfirm = {createOrder} />
         </div>
@@ -87,4 +87,4 @@ const CheckoutComponents = () => {
 }
 
 
-export default CheckoutComponents
+export default Checkout

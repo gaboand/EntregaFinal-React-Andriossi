@@ -35,17 +35,8 @@ const ItemDetailContainer = () => {
     }
     , [itemId])
 
-        //     getProductsById (itemId)
-    //         .then(response => {
-    //             setProducts(response)
-    //         })
-    //         .catch (error => {
-    //             console.error(error)
-    //         })
-    // }, [itemId])
-
     return(
-        <div className='ItemDetailContainer'>
+        <div className='cartcontainer'>
             <ItemDetail {...product} />
         </div>
     )

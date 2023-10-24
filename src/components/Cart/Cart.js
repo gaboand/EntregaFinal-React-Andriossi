@@ -9,7 +9,7 @@ const Cart = () => {
 
     if (totalQuantity === 0) {
         return (
-            <div>
+            <div className='cartcontainer'>
                 <h1>No hay productos en el carrito</h1>
                 <Link to='/' className='Option'>Productos</Link>
             </div>
@@ -17,7 +17,7 @@ const Cart = () => {
     }
 
     return (
-        <div>
+        <div className='cartcontainer'>
             {cart.map((item) => (
                 <CartItem
                     key={item.id}

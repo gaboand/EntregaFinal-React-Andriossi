@@ -21,10 +21,13 @@ return(
      <form onSubmit={handleConfirm} className='Form'>
         <label className="Label">Nombre</label>
            <input className='Input' type="text" value={name} onChange={({target}) => setName(target.value)} />
-        <label className="Label">Nombre</label>
+        <label className="Label">Teléfono</label>
            <input className='Input' type="text" value={phone} onChange={({target}) => setPhone(target.value)} />
-        <label className="Label">Nombre</label>
+        <label className="Label">Email</label>
            <input className='Input' type="email" value={email} onChange={({target}) => setEmail(target.value)} />
+         <div className='Label'>
+            <button type="submit" className='Button'>Crear Orden</button>
+         </div>
      </form>
    </div>
 

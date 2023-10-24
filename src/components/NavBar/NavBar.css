@@ -4,14 +4,14 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     position:fixed;
     width: 100vw;
 }
 
 #title{
     padding: 10px;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .linkContainer{
@@ -24,13 +24,11 @@
 }
 
 .linkOption{
-    font-size: 12px;
-    
+    font-size: 20px;
 }
 
 .linkOption:hover{
     font-weight: bold;
-    
 }
 
 #Navbar{
@@ -39,9 +37,8 @@
 }
 
 
-
 .cartImg{
-    height: 14px;
-    width: 14px;
+    height: 20px;
+    width: 20px;
 }
 

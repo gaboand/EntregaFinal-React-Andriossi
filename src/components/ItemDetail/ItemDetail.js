@@ -2,20 +2,20 @@ import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useCart } from '../../context/CartContext'; // Cambio en la importación
+import { useCart } from '../../context/CartContext';
 
 
 const ItemDetail = ({id, name, img, precio, categoria, stock, description }) => {
     const [quantityAdded, setQuantityAdded] = useState(0)
-    const { addItem } = useCart(); // Cambio en cómo se obtiene el contexto
+    const { addItem } = useCart();
+
+    console.log(img)
 
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity);
 
         const item = {
-            id,
-            name,
-            precio
+            id, name, precio
         };
 
         addItem(item, quantity);
