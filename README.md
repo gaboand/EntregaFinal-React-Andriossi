@@ -2,7 +2,7 @@
 
 El proyecto se trata de un ecommerce de prendas femeninas, se conecta a una base de datos creada en Firebase, que tiene los campos: nombre, precio, categoría, descripción, stock y foto de las prenda. 
 
-Para hacer más amigable la carga de los datos, se creó otra App (llamada AppBack.js) que simula un administrador de BackEnd para la carga de nuevos productos y un control de stock. El mismo se encuentra el el repositorio : xxxxxxxxxxxxxxxxx
+Para hacer más amigable la carga de los datos, se creó otra App (llamada AppBack.js) que simula un administrador de BackEnd para la carga de nuevos productos y un control de stock. El mismo se encuentra el el repositorio : https://github.com/gaboand/BackEnd
 
 Con respecto a la funcionanlidad de la App del Ecommerce, en el index se renderizan todas las cards con los productos en stock que se encuentran en la base de datos, mediante el Nav, se puede seleccionar entre cuatro opociones de prendas, las cuales se renderizan de acuerdo al filtro según su categoria. 
 
