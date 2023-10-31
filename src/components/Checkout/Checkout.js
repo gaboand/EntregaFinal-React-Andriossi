@@ -32,23 +32,25 @@ const Checkout = () => {
 
             const productsRef = collection(db, 'products')
 
-            // const productsAddedFromFirestore = await getDocs (query(productsRef, where(documentId(), 'in,', ids)))
+            console.log('Obteniendo datos de productos para carrito:', ids);
+
+            const productsAddedFromFirestore = await getDocs (query(productsRef, where(documentId(), 'in', ids)))
       
-            // const { docs } = productsAddedFromFirestore
+            const { docs } = productsAddedFromFirestore
 
-            // docs.forEach(doc => {
-            //     const dataDoc = doc.data()
-            //     const stockDb = dataDoc.stock
-
-            //     const productAddedToCart = cart.find(prod => prod.id === doc.id)
-            //     const prodQuantity = productAddedToCart?.quantity
-
-            //     if(stockDb >= prodQuantity) {
-            //         batch.update(doc.ref, { stock: stockDb - prodQuantity})
-            //     } else{
-            //         outOfStock.push( {id: doc.id, ...dataDoc})
-            //     }
-            // })
+            docs.forEach(doc => {
+                const dataDoc = doc.data();
+                const stockDb = dataDoc.stock;
+            
+                const productAddedToCart = cart.find(prod => prod.id === doc.id);
+                const prodQuantity = productAddedToCart?.quantity;
+            
+                if (stockDb >= prodQuantity) {
+                    batch.update(doc.ref, { stock: stockDb - prodQuantity });
+                } else {
+                    outOfStock.push({ id: doc.id, ...dataDoc });
+                }
+            });
 
             if(outOfStock.length === 0) {
                 await batch.commit()
@@ -90,7 +92,7 @@ const Checkout = () => {
 
     return (
         <div className='cartcontainer'>
-            <h1>Checkout</h1>
+            <h1 className="CheckTitle">Checkout</h1>
             <CheckoutForm onConfirm = {createOrder} />
         </div>
     )

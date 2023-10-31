@@ -11,6 +11,7 @@ import Info from './components/Info/Info';
 import Checkout from './components/Checkout/Checkout';
 
 
+
 function App() {
   return (
     <div className="App">

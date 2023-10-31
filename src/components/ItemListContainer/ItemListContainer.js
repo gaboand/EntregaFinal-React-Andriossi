@@ -1,47 +1,44 @@
-import {useState,useEffect} from "react"
-import ItemList from '../ItemList/ItemList'
-import { useParams } from "react-router-dom"
-import {getDocs, collection, query, where} from "firebase/firestore"
-import { db } from "../../services/firebase/firebaseConfig"
+import { useState, useEffect } from "react";
+import ItemList from '../ItemList/ItemList';
+import { useParams } from "react-router-dom";
+import { getDocs, collection, query, where } from "firebase/firestore";
+import { db } from "../../services/firebase/firebaseConfig";
 
+const ItemListContainer = ({ gretting }) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  const { categoryId } = useParams();
 
-const ItemListContainer = ({gretting}) => {
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    setLoading(true);
 
-    const { categoryId } = useParams()
+    const collectionRef = categoryId
+      ? query(collection(db, "products"), where("category", "==", categoryId))
+      : collection(db, "products");
 
-    useEffect(() => {
-        setLoading(true)
+    getDocs(collectionRef)
+      .then((response) => {
+        const productsAdapted = response.docs.map((doc) => {
+          const data = doc.data();
+          return { id: doc.id, ...data };
+        });
+        setProducts(productsAdapted);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [categoryId]);
 
-        const collectionRef = categoryId
-            ? query(collection(db,"products"),where("category", "==", categoryId))
-            : collection(db,"products")
+  return (
+    <div>
+      <h1>{gretting}</h1>
+      <ItemList products={products} className="productscontainer" />
+    </div>
+  );
+};
 
-        getDocs(collectionRef)
-        .then(response => {
-            const productsAdapted = response.docs.map(doc => {
-                const data = doc.data()
-                return {id: doc.id, ...data}
-            })
-            setProducts(productsAdapted)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-        .finally(()=>{
-            setLoading(false)
-        })
-})
-
-
-    return (
-        <div >
-            <h1 >{gretting}</h1>
-            <ItemList products={products} className="productscontainer"/>
-        </div>
-    )
-}
-
-export default ItemListContainer
+export default ItemListContainer;

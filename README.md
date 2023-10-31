@@ -1,3 +1,19 @@
+# Proyecto Final React App - Ecommerce Voila
+
+El proyecto se trata de un ecommerce de prendas femeninas, se conecta a una base de datos creada en Firebase, que tiene los campos: nombre, precio, categoría, descripción, stock y foto de las prenda. 
+
+Para hacer más amigable la carga de los datos, se creó otra App (llamada AppBack.js) que simula un administrador de BackEnd para la carga de nuevos productos y un control de stock. El mismo se encuentra el el repositorio : xxxxxxxxxxxxxxxxx
+
+Con respecto a la funcionanlidad de la App del Ecommerce, en el index se renderizan todas las cards con los productos en stock que se encuentran en la base de datos, mediante el Nav, se puede seleccionar entre cuatro opociones de prendas, las cuales se renderizan de acuerdo al filtro según su categoria. 
+
+Cada producto da acceso al detalle del mismo, desde donde se puede selecciona la cantidad y agregarlos al carrito.
+
+Una vez que se desea finalizar la compra, se puede acceder al Cart mediante el botçon de terminar compra o el Widget que se encuentra en el NavBar. Aquí es posible eliminar productos particulares, vaciar el carrito o continuar con el Checkout.
+
+Una vez en el Checkout, es necesario completar los datos requeridos para que se generé la orden, esta se procesa, emite un Id que se referencia con un objeto dentro de una colección de datos llamada "Orders" en Firebase, donde se carga la fecha y el horario, detalle los productos adquiridos, el monto total y los datos del comprador.
+
+Para finalizar, al momento que se genera la orden, se actualiza el stock de cada producto, restando las cantidades adquiridas al stock inicial para cada producto. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -13,6 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
 
 ### `npm test`
 

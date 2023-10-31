@@ -26,11 +26,11 @@ const ItemDetail = ({id, name, img, precio, categoria, stock, description }) => 
             <picture>
                 <img src={img} className='ItemImg2' alt={name} />
             </picture>
-            <section>
-                <h2 className='ItemHeader'>{name}</h2>
-                <p className='Info'>Precio: ${precio}</p>
-                <p className='Info'>Stock disponible: {stock}</p>
-                <p className='Info'>Descripción: {description}</p>
+            <section className='Info-details'>
+                <h2 className='ItemHeaderb'>{name}</h2>
+                <p className='Infob'>Precio: ${precio}</p>
+                <p className='Infob'>Stock disponible: {stock}</p>
+                <p className='Infob'>Descripción: {description}</p>
             </section>
             <footer className='ItemFooter'>
                 {
@@ -40,6 +40,7 @@ const ItemDetail = ({id, name, img, precio, categoria, stock, description }) => 
                         <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>
                     )
                 }
+                <Link to='/' className='Option'>Seguir Comprando</Link>
             </footer>
         </article>
     );

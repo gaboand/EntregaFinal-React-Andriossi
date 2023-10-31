@@ -18,17 +18,23 @@ const Cart = () => {
 
     return (
         <div className='cartcontainer'>
-            {cart.map((item) => (
+            <div className='cart-item'>
+                {cart.map((item) => (
                 <CartItem
                     key={item.id}
-                    item={item} // Pasa el objeto de item en lugar de solo su id
-                    quantity={item.quantity} // Pasa la cantidad de este ítem
-                    removeItem={removeItem} // Pasa la función removeItem
+                    item={item} 
+                    quantity={item.quantity} 
+                    removeItem={removeItem} 
                 />
             ))}
-            <h3>Total: ${total}</h3>
-            <button onClick={() => clearCart()} className='Button'>Vaciar Carrito</button>
-            <Link to='/checkout' className='Option'>Checkout</Link>
+            </div>
+            
+            <h3 className='totalAmount'>Total: ${total}</h3>
+            <div className='cartButton'>
+                <button onClick={() => clearCart()} className='Option'>Vaciar Carrito</button>
+                <Link to='/Checkout' className='Option'>Checkout</Link>
+            </div>
+            
         </div>
     )
 }
