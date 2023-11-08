@@ -53,4 +53,3 @@ const Item = ({ id, name, img, precio, stock, description }) => {
 };
 
 export default Item;
-
